@@ -2,35 +2,35 @@
   {% url 'index' as index_url %}
   <span>
     {% if request.path == index_url %}Home
-    {% else %}<a href="{{ index_url}}">Home</a>
+    {% else %}<a href="{{ index_url }}">Home</a>
     {% endif %}
   </span>
 
   {% url 'experience' as experience_url %}
   <span>
     {% if request.path == experience_url %}Experience
-    {% else %}<a href="{{ experience_url}}">Experience</a>
+    {% else %}<a href="{{ experience_url }}">Experience</a>
     {% endif %}
   </span>
 
   {% url 'skills' as skills_url %}
   <span>
     {% if request.path == skills_url %}Skills
-    {% else %}<a href="{{ skills_url}}">Skills</a>
+    {% else %}<a href="{{ skills_url }}">Skills</a>
     {% endif %}
   </span>
 
   {% url 'education' as education_url %}
   <span>
     {% if request.path == education_url %}Education
-    {% else %}<a href="{{ education_url}}">Education</a>
+    {% else %}<a href="{{ education_url }}">Education</a>
     {% endif %}
   </span>
 
   {% url 'projects' as projects_url %}
   <span>
     {% if request.path == projects_url %}Projects
-    {% else %}<a href="{{ projects_url}}">Projects</a>
+    {% else %}<a href="{{ projects_url }}">Projects</a>
     {% endif %}
   </span>
 
@@ -41,22 +41,24 @@
     {% endif %}
   </span>
 
-  <span style="float: right;">
+  <div style="float: right;">
     {% if user.is_authenticated %}
       {% url 'profile' as profile_url %}
       <span>
         Hi
         {% if request.path == profile_url %}{{ user.username }}
-        {% else %}<a href="{{ profile_url }}">{{user.username}}</a>
+        {% else %}<a href="{{ profile_url }}">{{ user.username }}</a>
         {% endif %}!
       </span>
-      <span>
-        <a href="{% url 'logout' %}">Logout</a>
-      </span>
+      <form action="{% url 'logout' %}" method="post" style="display: inline; margin-left: 10px;">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
     {% else %}
       <span>
         <a href="{% url 'login' %}">Login</a>
       </span>
     {% endif %}
-  </span>
+  </div>
+
 </nav>

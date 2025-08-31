@@ -24,5 +24,5 @@ def projects(request):
 def skills(request):
     return render(request, 'skills.html')
 
-class profileView(LoginRequiredMixin, TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/profile.html'
