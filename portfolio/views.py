@@ -2,27 +2,35 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 def index(request):
     print(request.user)
-    return render(request, 'index.html')
+    return render(request, "index.html")
+
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, "about.html")
+
 
 def contact(request):
-    return render(request, 'contact.html')
+    return render(request, "contact.html")
+
 
 def experience(request):
-    return render(request, 'experience.html')
+    return render(request, "experience.html")
+
 
 def education(request):
-    return render(request, 'education.html')
+    return render(request, "education.html")
+
 
 def projects(request):
-    return render(request, 'projects.html')
+    return render(request, "projects.html")
+
 
 def skills(request):
-    return render(request, 'skills.html')
+    return render(request, "skills.html")
+
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'accounts/profile.html'
+    template_name = "accounts/profile.html"
